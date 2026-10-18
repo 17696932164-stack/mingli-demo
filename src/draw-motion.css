@@ -59,9 +59,9 @@
   .draw[data-draw-state="result"] > .gallery-link { animation: none; }
 }
 .fortune-artwork { display: block; position: relative; width: 100%; height: 100%; }
-.fortune-separated { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.fortune-separated { opacity:0; position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .shaking .fortune-original { visibility: hidden; }
-.fortune-stick { transform-box: view-box; animation-duration: 420ms; animation-iteration-count: infinite; animation-timing-function: ease-in-out; }
+.fortune-separated.is-shaking{opacity:1}.fortune-stick { animation-play-state:paused; transform-box: view-box; animation-duration: 420ms; animation-iteration-count: infinite; animation-timing-function: ease-in-out; }
 .fortune-stick-0 { transform-origin: 410px 615px; animation-name: stick-left; }
 .fortune-stick-1 { transform-origin: 564px 615px; animation-name: stick-center; animation-delay: -100ms; }
 .fortune-stick-2 { transform-origin: 724px 615px; animation-name: stick-right; animation-delay: -180ms; }
@@ -83,3 +83,5 @@
   55% { transform: translate(-16px,18px) rotate(-21deg); }
   80% { transform: translate(8px,-24px) rotate(4deg); }
 }
+
+.fortune-separated.is-shaking .fortune-stick{animation-play-state:running}

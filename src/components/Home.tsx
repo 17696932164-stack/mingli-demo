@@ -2,6 +2,7 @@ import type { CSSProperties, Dispatch } from 'react';
 import { features, homeArtwork, keywords, metrics, homeReadingEntrance } from '../data/demoFlow';
 import type { State, Action } from '../data/demoFlow';
 import { Chevron } from './Primitives';
+import { prepareDrawAsset } from '../drawAssets';
 // The atlas supplies illustration regions only. Text and controls remain DOM.
 function Artwork({ name, className = '' }: { name: keyof typeof homeArtwork; className?: string }) {
  const [x,y,width,height]=homeArtwork[name];
@@ -14,5 +15,5 @@ export default function Home({state,dispatch}:{state:State;dispatch:Dispatch<Act
  <button className="home-interpret" onClick={()=>dispatch({type:'navigate',page:'daily'})}><strong>今日解读</strong><p aria-label={homeReadingEntrance.text}><span aria-hidden="true">{Array.from(homeReadingEntrance.text).map((char,i)=>char==='\n'?<br key={i}/>:<span className="reading-character" key={i} style={{animationDelay:`${homeReadingEntrance.delayMs+i*homeReadingEntrance.characterMs}ms`}}>{char}</span>)}</span></p><span className="home-round-arrow"><Chevron/></span></button>
  <div className="home-keywords"><h2>今日关键词</h2><div>{keywords.map(k=><span key={k}>{k}</span>)}</div></div></section>
  <section className="home-features"><h2>命理解读</h2><button className="home-more" onClick={()=>dispatch({type:'navigate',page:'chart'})}>更多 <Chevron/></button><div className="home-feature-grid">{features.map((f,i)=><button key={f.title} onClick={()=>f.page?dispatch({type:'navigate',page:f.page}):dispatch({type:'modal',modal:f.modal!})}><Artwork name={(['natal','annual','relationship','wallpaper'] as const)[i]}/><strong>{f.title}</strong><small>{f.subtitle}</small></button>)}</div></section>
- <section className="home-explore"><h2>探索更多</h2><button onClick={()=>dispatch({type:'modal',modal:'draw'})}><Artwork name="lucky"/><span className="home-lucky-copy"><strong>今日幸运签</strong><small>获取今天的幸运提示</small><Chevron/></span></button></section>
+ <section className="home-explore"><h2>探索更多</h2><button onPointerEnter={()=>{void prepareDrawAsset().catch(()=>{});}} onFocus={()=>{void prepareDrawAsset().catch(()=>{});}} onPointerDown={()=>{void prepareDrawAsset().catch(()=>{});}} onClick={()=>dispatch({type:'modal',modal:'draw'})}><Artwork name="lucky"/><span className="home-lucky-copy"><strong>今日幸运签</strong><small>获取今天的幸运提示</small><Chevron/></span></button></section>
  </div></div>;}

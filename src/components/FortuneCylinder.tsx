@@ -1,4 +1,5 @@
 import { useId } from 'react';
+import { drawAssetUrl } from '../drawAssets';
 
 // All layers reuse the original artwork; masks only separate the three sticks.
 const sticks = [
@@ -8,10 +9,10 @@ const sticks = [
 ];
 export default function FortuneCylinder({ shaking }: { shaking: boolean }) {
   const id = useId().replace(/:/g, '');
-  const source = './assets/fortune-cylinder.webp';
+  const source = drawAssetUrl;
   return <span className="fortune-artwork">
     <img className="fortune-original" src={source} alt="紫金色幸运签筒" />
-    {shaking && <svg className="fortune-separated" viewBox="0 0 1122 1402" aria-hidden="true">
+    {<svg className={`fortune-separated ${shaking ? 'is-shaking' : ''}`} viewBox="0 0 1122 1402" aria-hidden="true">
       <defs>
         {sticks.map((d, i) => <clipPath key={i} id={`${id}-stick-${i}`}><path d={d}/></clipPath>)}
         {[{x:337,w:142},{x:480,w:174},{x:655,w:140}].map((r,i) => <clipPath key={i} id={`${id}-tail-${i}`}><rect x={r.x} y="560" width={r.w} height="44"/></clipPath>)}

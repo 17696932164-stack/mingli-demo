@@ -1,0 +1,22 @@
+/* Shared geometry from the supplied 750 × 88 status-bar reference. */
+.device .app-content > .status-bar {
+  height: 46px;
+  min-height: 46px;
+  padding: 4px 15px 0 28px;
+  align-items: center;
+  color: #000;
+}
+.device .app-content > .status-bar b {
+  font-family: Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: -.3px;
+  font-variant-numeric: tabular-nums;
+}
+.status-icons { display: flex; align-items: center; gap: 5px; height: 13px; }
+.status-icons svg { display: block; flex: none; height: 13px; }
+.status-signal { width: 18px; }
+.status-wifi { width: 17px; }
+.status-battery { width: 27px; }
+.device:has(.immersive) .app-content > .status-bar { color: #fff; }

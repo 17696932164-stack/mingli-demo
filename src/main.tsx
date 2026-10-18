@@ -8,4 +8,5 @@ import './natal.css';
 import './year.css';
 import './love.css';
 import './report-header.css';
+import './status-bar.css';
 ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></React.StrictMode>);

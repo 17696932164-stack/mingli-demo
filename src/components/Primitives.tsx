@@ -1,0 +1,6 @@
+import type { ReactNode } from 'react';
+export function Icon({name,className=''}:{name:string;className?:string}){return <img draggable={false} className={'asset '+className} src={`./assets/${name==='diamond'?'gem':name}.${name==='planet'?'png':'svg'}`} alt=""/>;}
+export function Chevron(){return <span className="chevron" aria-hidden="true"/>;}
+export function Card({children,className=''}:{children:ReactNode;className?:string}){return <section className={'card '+className}>{children}</section>;}
+export function ProfileHeader({name,title,subtitle='今日已更新 · 10月17日',onEdit}:{name:string;title:string;subtitle?:string;onEdit?:()=>void}){return <div className="profile-header"><Icon name="avatar"/><div className="min-w-0 flex-1"><strong>{name.slice(0,1)}先生的{title}</strong><p>{subtitle}</p></div>{onEdit&&<button className="switch" onClick={onEdit}>切换 <Chevron/></button>}</div>;}
+export function StatusBar(){return <div className="status-bar"><b>9:41</b><div className="flex items-center gap-1"><Icon name="signal"/><svg width="19" height="15" viewBox="0 0 24 20" aria-hidden="true"><path d="M2 6Q12 -2 22 6M6 10Q12 5 18 10M10 14Q12 12 14 14" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/></svg><span className="battery"/></div></div>;}

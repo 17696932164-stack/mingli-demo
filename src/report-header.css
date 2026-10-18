@@ -1,0 +1,32 @@
+/* Match the annual-fortune header's spacing across the two report pages. */
+:is(.natal-view, .love-view) .status-bar {
+  height: 42px;
+  min-height: 42px;
+  padding: 10px 25px 5px 33px;
+}
+:is(.natal-view, .love-view) .status-bar b {
+  font-family: Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+}
+:is(.natal-view, .love-view) .nav {
+  height: 42.25px;
+  min-height: 42.25px;
+  padding: 0 15px;
+}
+:is(.natal-view, .love-view) .nav h2 {
+  font-size: 18px;
+  font-weight: 700;
+}
+:is(.natal-view, .love-view) .nav button {
+  width: 24px;
+  height: 36px;
+}
+:is(.natal-view, .love-view) .nav .asset {
+  width: 23px;
+  height: 23px;
+}
+:is(.natal-view, .love-view) .share-icon-vector {
+  width: 21px;
+  height: 24px;
+}

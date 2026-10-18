@@ -1,0 +1,15 @@
+import type {CSSProperties,Dispatch} from 'react';
+import {chartRows,spirits,tabs,supplementary,natalArtwork,elementColors} from '../data/demoFlow';
+import type {State,Action} from '../data/demoFlow';
+function Art({name}:{name:keyof typeof natalArtwork}){const [x,y,w,h]=natalArtwork[name];return <span className={'natal-art '+name} aria-hidden="true" style={{'--x':x,'--y':y,'--w':w,'--h':h} as CSSProperties}/>;}
+export default function NatalChart({state,dispatch}:{state:State;dispatch:Dispatch<Action>}){
+ const selected=tabs.chart[state.tab];
+ return <div className="natal-screen"><div className="natal-canvas">
+  <section className="natal-banner"><Art name="avatar"/><div><h1>{state.profile.name.slice(0,1)}先生的本命星盘</h1><p>了解先天特质，探索自我</p></div><Art name="planet"/></section>
+  <div className="natal-segments">{['八字命盘','占卜星盘'].map((t,i)=><button key={t} aria-pressed={state.chartMode===i} onClick={()=>dispatch({type:'chartMode',value:i})}>{t}</button>)}</div>
+  {state.chartMode===0?<><div className="natal-tabs" role="tablist" aria-label="报告章节">{tabs.chart.map((t,i)=><button key={t} role="tab" aria-selected={state.tab===i} onClick={()=>dispatch({type:'tab',value:i})}>{t}</button>)}</div>
+   {state.tab===0?<><section className="natal-profile"><h2>命主信息</h2><button className="natal-edit" onClick={()=>dispatch({type:'modal',modal:'profile'})}><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5M13 5l6-3 3 3-12 12-4 1 1-4Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/></svg>编辑</button><div className="natal-profile-rows"><div><span>姓名：{state.profile.name}</span><span>性别：{state.profile.gender}</span></div><p>出生时间：{state.profile.birth.replace('T',' ')}</p><p>真太阳时：2001-01-05 12:22</p></div></section>
+   <section className="natal-pillars"><h2>四柱命盘</h2><table><thead><tr>{['','年柱','月柱','日柱','时柱'].map((c,i)=><th key={i} scope="col">{c}</th>)}</tr></thead><tbody>{[...chartRows,['神煞',...spirits.chart]].map((row,i)=><tr key={row[0]} className={'natal-row-'+i}>{row.map((v,j)=>j===0?<th key={j} scope="row">{v}</th>:<td key={j}>{v.split('\n').map((line,k)=><span key={k} style={{color:[1,2,3,5].includes(i)?elementColors[line]:undefined}}>{line}</span>)}</td>)}</tr>)}</tbody></table><div className="natal-legend">{['金','木','水','火','土'].map(e=><span key={e}><i style={{background:elementColors[e]}}/>{e}</span>)}</div></section></>:<section className="natal-extra analysis-content"><div className="section-title"><h2>{selected}</h2><span className="demo-badge">演示内容</span></div>{(supplementary[selected]||[]).map(s=><article key={s.title}><h3>{s.title}</h3><p>{s.text}</p></article>)}<p className="muted text-xs">此章节为交互示例，非个人命理计算结果。</p></section>}
+  </>:<section className="natal-extra astrology"><h2>占卜星盘</h2><div className="zodiac-wheel">✦<span>☉</span><i>☽</i></div><h3>探索属于你的星辰</h3><p>当前资料仅提供八字命盘，暂无西方占星计算结果。</p><button className="primary" onClick={()=>dispatch({type:'chartMode',value:0})}>查看八字命盘</button></section>}
+ </div></div>;
+}

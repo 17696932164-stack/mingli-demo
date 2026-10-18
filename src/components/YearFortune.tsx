@@ -1,0 +1,15 @@
+import type {CSSProperties,Dispatch} from 'react';
+import {yearArtwork,yearTags,yearText,tabs,supplementary} from '../data/demoFlow';
+import type {State,Action} from '../data/demoFlow';
+import {Icon,Chevron} from './Primitives';
+function Art({name}:{name:keyof typeof yearArtwork}){const [x,y,w,h]=yearArtwork[name];return <span className={'year-art '+name} aria-hidden="true" style={{'--x':x,'--y-pos':y,'--w':w,'--h':h} as CSSProperties}/>;}
+function Lock(){return <svg className="year-lock" viewBox="0 0 24 29" aria-hidden="true"><path d="M6 12V8a6 6 0 0 1 12 0v4" fill="none" stroke="currentColor" strokeWidth="2.5"/><rect x="2" y="11" width="20" height="17" rx="3" fill="currentColor"/><circle cx="12" cy="18" r="2" fill="white"/><path d="M12 19v4" stroke="white" strokeWidth="1.5"/></svg>;}
+type Props={state:State;dispatch:Dispatch<Action>};
+export default function YearFortune({state,dispatch}:Props){const selected=tabs.year[state.tab];return <div className="year-screen"><div className={'year-canvas '+(state.tab?'year-secondary':'')}>
+ <section className="year-banner"><Art name="avatar"/><div><h1>{state.profile.name.slice(0,1)}先生的马年运势</h1><p>把握全年趋势，从容迎接变化</p></div><Art name="horse"/></section>
+ <div className="year-tabs" role="tablist" aria-label="报告章节">{tabs.year.map((t,i)=><button key={t} role="tab" aria-selected={state.tab===i} onClick={()=>dispatch({type:'tab',value:i})}>{t}</button>)}</div>
+ {state.tab===0?<section className="year-base"><h2>生肖太岁</h2><div className="year-profile"><div><span>姓名：{state.profile.name}</span><span>性别：{state.profile.gender}</span></div><p>出生时间：{state.profile.birth.replace('T',' ')}</p><p>出生地点：{state.profile.place}</p></div><div className="year-fortune-detail"><Art name="dragon"/><h3>无犯太岁</h3><div className="year-tag-row">{yearTags.map(t=><span key={t}>{t}</span>)}</div><p>{yearText}</p></div></section>:null}
+ {state.tab>0&&state.unlocked?<section className="year-unlocked analysis-content"><div className="section-title"><h2>{selected}</h2><span className="demo-badge">演示已解锁</span></div>{(supplementary[selected]||[]).map(s=><article key={s.title}><h3>{s.title}</h3><p>{s.text}</p></article>)}</section>:<section className="year-premium"><h2>开运建议</h2><button className="year-report-tag" onClick={()=>dispatch({type:'modal',modal:'membership'})}><Lock/><span>{state.unlocked?'已解锁':'完整报告'}</span></button>{state.unlocked?<div className="year-unlocked-list">{supplementary['开运建议'].map(s=><article key={s.title}><h3>{s.title}</h3><p>{s.text}</p></article>)}</div>:<><div className="year-blurred" aria-hidden="true">{['briefcase','heart','gem','lucky','wallpaper','planet'].map((name,i)=><div key={name} className={'tile-'+i}><Icon name={name}/><span>专属开运建议</span></div>)}</div><div className="year-lock-copy"><Lock/><span>解锁报告后可浏览全部内容</span></div><button className="year-unlock-button" onClick={()=>dispatch({type:'modal',modal:'membership'})}>低至 ¥5 开通会员解锁全部报告</button></>}</section>}
+ {state.tab===0&&<button className="year-next" onClick={()=>dispatch({type:'tab',value:2})}><span>命盘分析</span>{!state.unlocked&&<Lock/>}<Chevron/></button>}
+ </div></div>;}
+

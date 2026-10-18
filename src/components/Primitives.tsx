@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-export function Icon({name,className=''}:{name:string;className?:string}){return <img draggable={false} className={'asset '+className} src={`./assets/${name==='diamond'?'gem':name}.${name==='planet'?'png':'svg'}`} alt=""/>;}
+export function Icon({name,className=''}:{name:string;className?:string}){return <img draggable={false} className={'asset '+className} src={`./assets/${name==='diamond'?'gem':name}.${name==='planet'?'webp':'svg'}`} alt=""/>;}
 export function Chevron(){return <span className="chevron" aria-hidden="true"/>;}
 export function Card({children,className=''}:{children:ReactNode;className?:string}){return <section className={'card '+className}>{children}</section>;}
 export function ProfileHeader({name,title,subtitle='今日已更新 · 10月17日',onEdit}:{name:string;title:string;subtitle?:string;onEdit?:()=>void}){return <div className="profile-header"><Icon name="avatar"/><div className="min-w-0 flex-1"><strong>{name.slice(0,1)}先生的{title}</strong><p>{subtitle}</p></div>{onEdit&&<button className="switch" onClick={onEdit}>切换 <Chevron/></button>}</div>;}

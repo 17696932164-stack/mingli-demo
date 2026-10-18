@@ -8,7 +8,7 @@ const sticks = [
 ];
 export default function FortuneCylinder({ shaking }: { shaking: boolean }) {
   const id = useId().replace(/:/g, '');
-  const source = './assets/fortune-cylinder.png';
+  const source = './assets/fortune-cylinder.webp';
   return <span className="fortune-artwork">
     <img className="fortune-original" src={source} alt="紫金色幸运签筒" />
     {shaking && <svg className="fortune-separated" viewBox="0 0 1122 1402" aria-hidden="true">

@@ -49,9 +49,37 @@
   to { opacity: 1; transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .fortune-separated { display: none; }
+  .shaking .fortune-original { visibility: visible; }
+  .fortune-stick { animation: none; }
   .draw .fortune-cylinder.shaking { animation: none; }
   .draw[data-draw-state="shaking"]::after { display: none; }
   .draw .fortune-result,
   .draw[data-draw-state="result"] > .primary,
   .draw[data-draw-state="result"] > .gallery-link { animation: none; }
+}
+.fortune-artwork { display: block; position: relative; width: 100%; height: 100%; }
+.fortune-separated { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.shaking .fortune-original { visibility: hidden; }
+.fortune-stick { transform-box: view-box; animation-duration: 420ms; animation-iteration-count: infinite; animation-timing-function: ease-in-out; }
+.fortune-stick-0 { transform-origin: 410px 615px; animation-name: stick-left; }
+.fortune-stick-1 { transform-origin: 564px 615px; animation-name: stick-center; animation-delay: -100ms; }
+.fortune-stick-2 { transform-origin: 724px 615px; animation-name: stick-right; animation-delay: -180ms; }
+@keyframes stick-left {
+  0%,100% { transform: translate(0,0) rotate(0); }
+  25% { transform: translate(16px,-25px) rotate(13deg); }
+  55% { transform: translate(28px,14px) rotate(20deg); }
+  80% { transform: translate(-8px,-38px) rotate(-5deg); }
+}
+@keyframes stick-center {
+  0%,100% { transform: translate(0,0) rotate(0); }
+  25% { transform: translate(-12px,20px) rotate(-7deg); }
+  55% { transform: translate(14px,-42px) rotate(9deg); }
+  80% { transform: translate(5px,-12px) rotate(3deg); }
+}
+@keyframes stick-right {
+  0%,100% { transform: translate(0,0) rotate(0); }
+  25% { transform: translate(-24px,-32px) rotate(-16deg); }
+  55% { transform: translate(-16px,18px) rotate(-21deg); }
+  80% { transform: translate(8px,-24px) rotate(4deg); }
 }

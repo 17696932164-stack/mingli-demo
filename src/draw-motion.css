@@ -1,0 +1,57 @@
+.draw .fortune-cylinder.shaking {
+  transform-origin: 50% 85%;
+  animation: draw-rock var(--draw-shake-duration) both;
+  opacity: 1;
+  will-change: transform, opacity;
+}
+.draw[data-draw-state="shaking"]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(ellipse at 50% 48%, #fff9e9d9 0%, #e4c5ff88 24%, #ceadff22 48%, transparent 70%);
+  animation: draw-flash var(--draw-shake-duration) both;
+}
+.draw .fortune-result {
+  transform-origin: 50% 60%;
+  animation: draw-reveal var(--draw-reveal-duration) cubic-bezier(.16,.8,.25,1) both;
+}
+.draw[data-draw-state="result"] > .primary,
+.draw[data-draw-state="result"] > .gallery-link {
+  animation: draw-actions 300ms ease-out 300ms both;
+}
+@keyframes draw-rock {
+  0% { transform: translate(0,0) rotate(0) scale(1); }
+  8% { transform: translate(5px,-5px) rotate(9deg); }
+  19% { transform: translate(-9px,2px) rotate(-14deg); }
+  30% { transform: translate(10px,-6px) rotate(16deg); }
+  41% { transform: translate(-11px,3px) rotate(-17deg); }
+  52% { transform: translate(10px,-7px) rotate(15deg); }
+  62% { transform: translate(-8px,1px) rotate(-13deg); }
+  71% { transform: translate(5px,-4px) rotate(8deg); }
+  80% { transform: translate(0,0) rotate(0) scale(.98); opacity: 1; }
+  88% { transform: translateY(-10px) scale(1.04); opacity: 1; }
+  100% { transform: translateY(-30px) scale(1.1); opacity: 0; }
+}
+@keyframes draw-flash {
+  0%,74% { opacity: 0; transform: scale(.6); }
+  89% { opacity: .85; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.15); }
+}
+@keyframes draw-reveal {
+  0% { opacity: 0; transform: translateY(24px) scale(.8); filter: brightness(1.35); }
+  65% { opacity: 1; transform: translateY(-4px) scale(1.02); filter: brightness(1.05); }
+  100% { opacity: 1; transform: none; filter: none; }
+}
+@keyframes draw-actions {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .draw .fortune-cylinder.shaking { animation: none; }
+  .draw[data-draw-state="shaking"]::after { display: none; }
+  .draw .fortune-result,
+  .draw[data-draw-state="result"] > .primary,
+  .draw[data-draw-state="result"] > .gallery-link { animation: none; }
+}

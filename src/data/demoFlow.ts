@@ -1,3 +1,4 @@
+export const homeReadingEntrance = { text: '人际与合作是今天的关键词。\n沟通表达状态在线，适合推进合作，拓展关系。', delayMs: 150, characterMs: 25 };
 import { useEffect, useReducer } from 'react';
 export const drawMotion = { shakeMs: 1900, revealMs: 650 };
 export type Page = 'home'|'daily'|'chart'|'year'|'love';

@@ -1,0 +1,23 @@
+.lotus-wallpaper { overflow: hidden; }
+.lotus-bloom { transform-origin: 320px 570px; }
+.lotus-drop { opacity: 0; }
+.lotus-ripple { opacity: 0; transform-origin: 162px 974px; }
+.current-wallpaper .lotus-bloom { animation: lotus-sway 5s ease-in-out infinite; }
+.current-wallpaper .lotus-drop { animation: lotus-drip var(--water-cycle) cubic-bezier(.4,0,.8,.6) infinite; }
+.current-wallpaper .lotus-ripple { animation: lotus-ripple var(--water-cycle) ease-out infinite; }
+@keyframes lotus-sway { 0%,100% { transform: rotate(-.45deg) translateX(-1px); } 50% { transform: rotate(.45deg) translateX(1px); } }
+@keyframes lotus-drip {
+  0% { opacity: 0; transform: translate(0,0) scaleY(.6); }
+  8% { opacity: .9; transform: translate(0,0) scaleY(1); }
+  65% { opacity: .85; transform: translate(-9px,410px); }
+  67%,100% { opacity: 0; transform: translate(-9px,410px); }
+}
+@keyframes lotus-ripple {
+  0% { opacity: 0; transform: scale(.12); }
+  10% { opacity: .9; }
+  75%,100% { opacity: 0; transform: scale(1.8); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .current-wallpaper .lotus-bloom,.current-wallpaper .lotus-drop,.current-wallpaper .lotus-ripple { animation: none; }
+}
+.lotus-drop{transform-origin:171px 560px}

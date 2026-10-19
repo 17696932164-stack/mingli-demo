@@ -11,4 +11,4 @@ import './report-header.css';
 import './status-bar.css';
 import './draw-motion.css';
 ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></React.StrictMode>);
-import './wallpaper-motion.css';
+

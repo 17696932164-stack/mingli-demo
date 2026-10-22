@@ -28,7 +28,7 @@ export const supplementary:Record<string,{title:string;text:string}[]>={
  '五行分析':[{title:'循序渐进，保持平衡',text:'在工作与生活之间留出空间，关注自己的实际需要。'}],
  '事业机遇':[{title:'把准备做在机会之前',text:'梳理近期的工作成果，与伙伴明确下一步分工。'}]
 };
-export const wallpapers=[{id:'lotus',title:'全年鸿运',subtitle:'把美好的期许，留在每一天',colors:['#d9ecf4','#d8c8fb'],kind:'lotus'},{id:'mountain',title:'步步高升',subtitle:'心有山海，步履从容',colors:['#d5e9ff','#9695d8'],kind:'mountain'},{id:'blossom',title:'缘来是你',subtitle:'愿每一份真心，都有回应',colors:['#ffe4ef','#e7d4fa'],kind:'blossom'},{id:'stars',title:'好运相随',subtitle:'星光与你，一路同行',colors:['#29225c','#9c78e8'],kind:'stars'}];
+export const wallpapers=[{id:'lotus',title:'全年鸿运',subtitle:'全年好运已为你准备好',colors:['#d9ecf4','#d8c8fb'],kind:'lotus'},{id:'mountain',title:'步步高升',subtitle:'心有山海，步履从容',colors:['#d5e9ff','#9695d8'],kind:'mountain'},{id:'stars',title:'好运相随',subtitle:'星光与你，一路同行',colors:['#29225c','#9c78e8'],kind:'stars'},{id:'blossom',title:'缘来是你',subtitle:'愿每一份真心，都有回应',colors:['#ffe4ef','#e7d4fa'],kind:'blossom'}];
 export const fortunes=[{rank:'上上签',title:'春风得意',poem:'春风拂面花开早\n心有所向皆可期',text:'今天适合主动表达，向期待已久的事情迈出一小步。保持真诚，好消息会在行动中慢慢靠近。',keyword:'主动 · 合作'},{rank:'上吉签',title:'静待花开',poem:'细雨润物悄无声\n好事自会如期至',text:'把注意力放在眼前能完成的小事上。给自己一些耐心，也给美好的变化一点时间。',keyword:'耐心 · 积累'},{rank:'吉签',title:'顺心而行',poem:'云开月明风正好\n从容一步见新程',text:'放松心情，整理思绪。一次轻松的交流，可能为今天带来新的灵感。',keyword:'从容 · 表达'}];
 export type State={page:Page;modal:Modal;tab:number;chartMode:number;profile:Profile;wallpaper:number;drawAsset:'loading'|'ready'|'error';draw:'idle'|'shaking'|'result';fortune:number;saved:boolean;unlocked:boolean;toast:string};
 export const initialState:State={page:'home',modal:null,tab:0,chartMode:0,profile:profileDefault,wallpaper:0,drawAsset:'loading',draw:'idle',fortune:0,saved:false,unlocked:false,toast:''};

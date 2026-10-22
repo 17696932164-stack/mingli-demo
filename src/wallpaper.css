@@ -1,0 +1,28 @@
+/* Wallpaper-only layout, measured against the approved 849 × 1852 reference. */
+.overlay.immersive:has(.wallpapers){padding:0;background:rgba(23,19,41,.88);backdrop-filter:blur(1px)}
+.immersive .dialog.wallpapers{height:100%;max-height:none;padding:0;overflow:hidden}
+.wallpapers .close{top:9.3%;right:4.4%;width:31px;height:31px;background:#ffffff18;border-color:#ffffff38}
+.immersive .wallpapers h2{position:absolute;top:17%;left:0;width:100%;margin:0;font-size:27px;font-weight:650;letter-spacing:1px;line-height:1.25}
+.wallpapers>.modal-subtitle{position:absolute;top:21.8%;width:100%;font-size:14px;letter-spacing:.6px;color:#d9c9ef}
+.wallpapers .carousel{position:absolute;top:26.2%;left:0;width:100%;height:49%;margin:0}
+.wallpapers .current-wallpaper{width:52.2%;height:100%;border-radius:15px;box-shadow:none}
+.wallpapers .wallpaper-caption{padding:26px 3px 12px;background:linear-gradient(transparent,#fafbfff5 38%);color:#131126}
+.wallpapers .wallpaper-caption h3{font-size:16px;font-weight:700;margin:0 0 4px}
+.wallpapers .wallpaper-caption p{font-size:12px;color:#7180a7}
+.wallpapers .side-preview{width:20.3%;height:83.4%;top:6.7%;transform:none;opacity:1;border-radius:13px}
+.wallpapers .side-preview.left{left:0;right:auto;border-radius:0 13px 13px 0}
+.wallpapers .side-preview.right{left:auto;right:0;border-radius:13px 0 0 13px}
+.wallpapers .side-artwork{object-fit:fill}
+.wallpapers .carousel-arrow{top:6.7%;height:83.4%;width:20.3%;background:transparent;border-radius:13px;opacity:0}
+.wallpapers .carousel-arrow.prev{left:0}.wallpapers .carousel-arrow.next{right:0}
+.wallpapers .carousel-arrow svg{display:none}
+.wallpapers .carousel-arrow:focus-visible{opacity:1;outline-offset:-4px}
+.wallpapers .dots{position:absolute;top:76.3%;width:100%;gap:0}
+.wallpapers .dots button{width:16px;height:20px}
+.wallpapers .dots button:after{width:8px;height:8px;left:4px;top:6px}
+.wallpapers .dots button[aria-pressed=true]:after{background:#e0c5ff;box-shadow:0 0 8px #bd8fff}
+.wallpapers .swipe-hint{position:absolute;top:79%;width:100%;left:0;font-size:12px;color:#c1b3d3}
+.immersive .wallpapers .primary{position:absolute;top:82.1%;left:16%;width:68%;height:5.6%;min-height:44px;margin:0;display:flex;align-items:center;justify-content:center;gap:10px;padding:0;background:linear-gradient(120deg,#b980ff,#7040ff);border:1px solid #b48aff;box-shadow:none;font-size:17px;font-weight:650}
+.wallpapers .download-icon{width:22px;height:22px;flex:none}
+.wallpapers .gallery-link{position:absolute;top:89.7%;width:100%;left:0;margin:0;min-height:30px;font-size:14px;font-weight:600}
+
